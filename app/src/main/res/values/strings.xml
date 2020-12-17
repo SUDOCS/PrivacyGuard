@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Privacy Guard</string>
+    <string name="home_title">隐私保护</string>
+    <string name="settings_title">设置</string>
+    <string name="app_list_title">设置Hook对象</string>
+    <string name="project_desc">综合训练实验项目</string>
+</resources>

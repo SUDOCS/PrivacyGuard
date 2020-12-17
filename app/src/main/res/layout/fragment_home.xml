@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<com.qmuiteam.qmui.widget.QMUIWindowInsetLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:custom="http://npmdev.com"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:fitsSystemWindows="true"
+    tools:context=".fragment.SettingsFragment">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="?attr/qmui_topbar_height">
+
+        <androidx.appcompat.widget.LinearLayoutCompat
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/margin">
+
+            <com.npmdev.privacyguard.component.SwitcherCard
+                android:id="@+id/serialProtection"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                custom:detail="当应用请求获取IMEI等设备唯一序列号时，随即一个随机的字符串"
+                custom:title="设备序列号保护" />
+
+            <com.npmdev.privacyguard.component.SwitcherCard
+                android:id="@+id/sensitiveApi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                custom:detail="当APP调用敏感API时，如定位、录音、拍照等，向用户发出提示"
+                custom:title="敏感API调用监控" />
+
+            <com.npmdev.privacyguard.component.SwitcherCard
+                android:id="@+id/banReadingApps"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                custom:detail="阻止APP读取本机应用，并返回空结果"
+                custom:title="禁止读取本机应用" />
+        </androidx.appcompat.widget.LinearLayoutCompat>
+
+
+    </ScrollView>
+
+
+    <com.qmuiteam.qmui.widget.QMUITopBarLayout
+        android:id="@+id/topbar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fitsSystemWindows="true"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+
+    </com.qmuiteam.qmui.widget.QMUITopBarLayout>
+
+</com.qmuiteam.qmui.widget.QMUIWindowInsetLayout>
