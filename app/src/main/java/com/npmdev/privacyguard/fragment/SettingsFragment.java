@@ -57,13 +57,13 @@ public class SettingsFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         initGroupViewHeader();
 
-        new Handler().postDelayed(new Runnable() {
+        new Handler().post(new Runnable() {
             @Override
             public void run() {
                 listModeVal = CommonUtil.getPrefs(getContext()).getInt(Constant.LIST_MODE, 0);
                 updateListModeDetail(listModeVal);
             }
-        }, 10);
+        });
     }
 
     @Override
@@ -105,6 +105,9 @@ public class SettingsFragment extends Fragment {
                 .addTo(binding.settingGroup);
     }
 
+    /**
+     * 弹出Hook模式选择
+     */
     void showModelSheet() {
         QMUIBottomSheet.BottomListSheetBuilder builder = new QMUIBottomSheet.BottomListSheetBuilder(getActivity());
         builder.setGravityCenter(false)
@@ -117,6 +120,7 @@ public class SettingsFragment extends Fragment {
                     @SuppressLint("ApplySharedPref")
                     @Override
                     public void onClick(QMUIBottomSheet dialog, View itemView, int position, String tag) {
+                        // 点击后保存选择结果
                         dialog.dismiss();
                         Toast.makeText(getActivity(), tag, Toast.LENGTH_SHORT).show();
                         listModeVal = position;

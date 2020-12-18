@@ -1,8 +1,6 @@
 <resources>
     <!-- Base application theme. -->
     <style name="AppTheme" parent="QMUI.Compat.NoActionBar">
-        <!--        <item name="qmui_skin_support_topbar_bg">@color/app_topbar_bg_color</item>-->
-        <!--        <item name="qmui_skin_support_topbar_title_color">@color/qmui_config_color_pure_black</item>-->
         <item name="qmui_skin_support_topbar_image_tint_color">@color/qmui_config_color_pure_black
         </item>
     </style>

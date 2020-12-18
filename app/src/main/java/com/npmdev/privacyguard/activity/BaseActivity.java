@@ -1,16 +1,11 @@
 package com.npmdev.privacyguard.activity;
 
-import android.content.pm.ApplicationInfo;
-import android.content.pm.PackageInfo;
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 
 import androidx.core.content.ContextCompat;
 
 import com.qmuiteam.qmui.arch.QMUIActivity;
 import com.qmuiteam.qmui.util.QMUIStatusBarHelper;
-
-import java.util.List;
 
 public class BaseActivity extends QMUIActivity {
 

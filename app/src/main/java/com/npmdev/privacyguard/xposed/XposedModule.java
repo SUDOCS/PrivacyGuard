@@ -1,8 +1,6 @@
 package com.npmdev.privacyguard.xposed;
 
 
-import android.content.Context;
-
 import com.npmdev.privacyguard.Constant;
 import com.npmdev.privacyguard.xposed.hook.ApplicationPackageHooker;
 import com.npmdev.privacyguard.xposed.hook.DeviceSerialHooker;

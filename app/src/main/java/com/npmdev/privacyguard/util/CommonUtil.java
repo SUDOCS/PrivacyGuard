@@ -1,12 +1,9 @@
 package com.npmdev.privacyguard.util;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.SharedPreferences;
 
 import com.npmdev.privacyguard.Constant;
-
-import java.io.File;
 
 public class CommonUtil {
     public static SharedPreferences getPrefs(Context context) {

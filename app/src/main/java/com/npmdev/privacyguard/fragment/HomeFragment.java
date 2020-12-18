@@ -59,19 +59,25 @@ public class HomeFragment extends Fragment {
     @Override
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        // 在子线程中初始化UI
         new Handler().post(new Runnable() {
             @Override
             public void run() {
+                // 检查相应功能模块是否开启,通过开关状态展现在UI上,设置开关状态变化的监听回调
                 initSerialProtectionView();
                 initInstalledAppProtectionView();
                 initSensitiveProtectionView();
             }
         });
     }
-
+    /**
+     * 设备序列号保护卡片
+     */
     void initSerialProtectionView() {
         SharedPreferences sp = CommonUtil.getPrefs(getContext());
+        // 是否开启
         boolean isEnable = sp.getBoolean(Constant.ENABLE_SERIAL_PROTECTION, false);
+        // 设置开关状态变化监听回调
         binding.serialProtection.addOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("ApplySharedPref")
             @Override
@@ -86,24 +92,32 @@ public class HomeFragment extends Fragment {
                 FileSharedPreferences.makeWorldReadable(BuildConfig.APPLICATION_ID, Constant.PREF_FILENAME);
             }
         });
+        // 设置开关状态
         binding.serialProtection.getSwitcher().setChecked(isEnable);
     }
-
-
+    /**
+     * 禁止读取本机应用卡片
+     */
     void initInstalledAppProtectionView() {
         SharedPreferences sp = CommonUtil.getPrefs(getContext());
+        // 是否开启
         boolean isEnable = sp.getBoolean(Constant.ENABLE_BAN_READ_INSTALLED_APPLICATION, false);
+        // 设置开关状态变化监听回调
         binding.banReadingApps.addOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
             @SuppressLint("ApplySharedPref")
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                // 当开关状态变化时,立即保存,并设置xml文件为全局可读
                 sp.edit().putBoolean(Constant.ENABLE_BAN_READ_INSTALLED_APPLICATION, isChecked).commit();
                 FileSharedPreferences.makeWorldReadable(BuildConfig.APPLICATION_ID, Constant.PREF_FILENAME);
             }
         });
+        // 设置开关状态
         binding.banReadingApps.getSwitcher().setChecked(isEnable);
     }
-
+    /**
+     * 敏感API调用监控卡片
+     */
     void initSensitiveProtectionView() {
         SharedPreferences sp = CommonUtil.getPrefs(getContext());
         boolean isEnable = sp.getBoolean(Constant.SENSITIVE_API_PROTECTION, false);

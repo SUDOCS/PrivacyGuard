@@ -21,15 +21,25 @@ public class DeviceSerialHooker {
             Log.d(DeviceSerialHooker.class.getSimpleName(), lpparam.packageName);
             XSharedPreferences pre = XpUtil.getPrefs();
             // 设置被Hook的类名及方法，并给出随机非真实的返回值
-            HookMethod(lpparam, TelephonyManager.class.getName(), lpparam.classLoader, "getDeviceId", pre.getString(Constant.IMEI, ""), "读取了IMEI");
-            HookMethod(lpparam, TelephonyManager.class.getName(), lpparam.classLoader, "getSubscriberId", pre.getString(Constant.IMSI, ""), "读取了IMSI");
-            HookMethod(lpparam, WifiInfo.class.getName(), lpparam.classLoader, "getMacAddress", pre.getString(Constant.WLAN_MAC, ""), "读取了MAC地址");
+            HookMethod(lpparam, TelephonyManager.class.getName(), lpparam.classLoader, "getDeviceId",
+                    pre.getString(Constant.IMEI, ""), "读取了IMEI");
+            HookMethod(lpparam, TelephonyManager.class.getName(), lpparam.classLoader, "getSubscriberId",
+                    pre.getString(Constant.IMSI, ""), "读取了IMSI");
+            HookMethod(lpparam, WifiInfo.class.getName(), lpparam.classLoader, "getMacAddress",
+                    pre.getString(Constant.WLAN_MAC, ""), "读取了MAC地址");
 
         } catch (Throwable e) {
             Log.d(DeviceSerialHooker.class.getSimpleName(), "failed to hook" + e.getMessage());
         }
     }
 
+    /**
+     * @param lpparam 当前载入的App的参数
+     * @param className 被Hook的类的类名
+     * @param method 被Hook的类方法名
+     * @param result 预设返回值
+     * @param tip 当被Hook是给用户的提示
+     */
     public static void HookMethod(XC_LoadPackage.LoadPackageParam lpparam, String className, ClassLoader classLoader, String method, final String result, final String tip) {
         findAndHookMethod(className, classLoader, method, new XC_MethodHook() {
             @Override

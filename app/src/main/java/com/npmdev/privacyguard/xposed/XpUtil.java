@@ -13,8 +13,6 @@ import com.npmdev.privacyguard.Constant;
 
 import de.robv.android.xposed.XSharedPreferences;
 import de.robv.android.xposed.XposedBridge;
-import de.robv.android.xposed.XposedHelpers;
-import de.robv.android.xposed.callbacks.XC_LoadPackage;
 
 public class XpUtil {
     private static final String TAG = XpUtil.class.getSimpleName();
@@ -43,6 +41,7 @@ public class XpUtil {
             prefs = new XSharedPreferences("com.npmdev.privacyguard", "main_prefs");
             prefs.makeWorldReadable();
         } else {
+            // 载入刷新
             prefs.reload();
         }
         return prefs;

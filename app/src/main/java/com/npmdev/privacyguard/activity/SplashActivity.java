@@ -20,12 +20,12 @@ public class SplashActivity extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        // 绑定视图
         binding = ActivitySplashBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
 
         new Handler().post(new Runnable() {
-
             @Override
             public void run() {
                 // 新建动画
@@ -42,7 +42,6 @@ public class SplashActivity extends BaseActivity {
                     public void onAnimationStart(Animation animation) {
 
                     }
-
                     @Override
                     public void onAnimationEnd(Animation animation) {
                         // 当动画结束后，等待500毫秒进入主界面
